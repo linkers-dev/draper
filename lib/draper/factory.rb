@@ -44,7 +44,7 @@ module Draper
 
       def call(options)
         update_context options
-        decorator.call(object, options)
+        decorator.call(object, **options)
       end
 
       def decorator
