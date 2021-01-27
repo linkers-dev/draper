@@ -76,7 +76,7 @@ module Draper
 
     # Decorates the given item.
     def decorate_item(item)
-      item_decorator.call(item, { context: context })
+      item_decorator.call(item, context: context)
     end
 
     private
@@ -85,7 +85,7 @@ module Draper
       if decorator_class
         decorator_class.method(:decorate)
       else
-        ->(item, options) { item.decorate(options) }
+        ->(item, **options) { item.decorate(**options) }
       end
     end
   end
