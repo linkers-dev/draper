@@ -44,7 +44,7 @@ module Draper
 
       def call(options)
         update_context options
-        decorator.call(object, options)
+        decorator.call(object, **options)
       end
 
       def decorator
@@ -60,9 +60,9 @@ module Draper
 
       def object_decorator
         if collection?
-          ->(object, options) { object.decorator_class.decorate_collection(object, options.reverse_merge(with: nil))}
+          ->(object, **options) { object.decorator_class.decorate_collection(object, **options.reverse_merge(with: nil))}
         else
-          ->(object, options) { object.decorate(options) }
+          ->(object, **options) { object.decorate(**options) }
         end
       end
 

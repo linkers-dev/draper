@@ -85,7 +85,7 @@ module Draper
       if decorator_class
         decorator_class.method(:decorate)
       else
-        ->(item, options) { item.decorate(options) }
+        ->(item, **options) { item.decorate(**options) }
       end
     end
   end
